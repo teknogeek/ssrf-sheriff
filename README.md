@@ -24,7 +24,7 @@ This is an SSRF testing sheriff written in Go. It was originally created for the
 ## Usage
 
 ```bash
-go get -v github.com/teknogeek/ssrf-sheriff
+go get github.com/teknogeek/ssrf-sheriff
 cd $GOPATH/src/github.com/teknogeek/ssrf-sheriff
 cp config/base.example.yaml config/base.yaml
 
@@ -72,7 +72,7 @@ Content-Length: 81
 
 ## Credit
 
-Inspired (and requested) by [Frans Rosen](https://twitter.com/fransrosen) during his [talk at BountyCon '19 Singapore](https://speakerdeck.com/fransrosen/live-hacking-like-a-mvh-a-walkthrough-on-methodology-and-strategies-to-win-big?slide=49)
+Inspired (and requested) by [Frans Rosén](https://twitter.com/fransrosen) during his [talk at BountyCon '19 Singapore](https://speakerdeck.com/fransrosen/live-hacking-like-a-mvh-a-walkthrough-on-methodology-and-strategies-to-win-big?slide=49)
 
 
 -----
