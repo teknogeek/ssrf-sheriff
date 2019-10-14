@@ -1,0 +1,4 @@
+http:
+  address: ":8000"
+
+ssrf_token: "REPLACE_THIS_WITH_YOUR_SECRET_VALUE"
