@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/teknogeek/ssrf-sheriff/handler"
+	"github.com/ndelphit/ssrf-sheriff/handler"
 	"go.uber.org/fx"
 )
 
@@ -18,6 +18,6 @@ func opts() fx.Option {
 			handler.NewServerRouter,
 			handler.NewHTTPServer,
 		),
-		fx.Invoke(handler.StartServer),
+		fx.Invoke(handler.StartFilesGenerator, handler.StartServer),
 	)
 }
