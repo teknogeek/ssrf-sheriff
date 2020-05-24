@@ -5,7 +5,7 @@ This is an SSRF testing sheriff written in Go. It was originally created for the
 
 ## Features
 
-- Repsond to any HTTP method (`GET`, `POST`, `PUT`, `DELETE`, etc.)
+- Respond to any HTTP method (`GET`, `POST`, `PUT`, `DELETE`, etc.)
 - Configurable secret token (see [base.example.yaml](config/base.example.yaml))
 - Content-specific responses
   - With secret token in response body
@@ -14,10 +14,10 @@ This is an SSRF testing sheriff written in Go. It was originally created for the
     - HTML
     - CSV
     - TXT
-  - Without token in response body
-    - GIF
     - PNG
     - JPEG
+  - Without token in response body
+    - GIF
     - MP3
     - MP4
 
@@ -63,8 +63,6 @@ Content-Length: 81
 
 - Dynamically generate valid responses with the secret token visible for
   - GIF
-  - PNG
-  - JPEG
   - MP3
   - MP4
 - Secrets in HTTP response generated/created/signed per-request, instead of returning a single secret for all requests

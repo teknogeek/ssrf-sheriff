@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 
 	"github.com/gorilla/mux"
+	"github.com/teknogeek/ssrf-sheriff/generators"
 	"github.com/teknogeek/ssrf-sheriff/httpserver"
 	"go.uber.org/config"
 	"go.uber.org/fx"
@@ -52,6 +53,12 @@ func NewSSRFSheriffRouter(
 	}
 }
 
+// StartFilesGenerator starts the function which is dynamically generating JPG/PNG formats
+// with the secret token rendered in the media
+func StartFilesGenerator(cfg config.Provider) {
+	generators.InitMediaGenerators(cfg.Get("ssrf_token").String())
+}
+
 // StartServer starts the HTTP server
 func StartServer(server *http.Server, lc fx.Lifecycle) {
 	h := httpserver.NewHandle(server)
@@ -82,14 +89,13 @@ func (s *SSRFSheriffRouter) PathHandler(w http.ResponseWriter, r *http.Request) 
 		response = fmt.Sprintf(tmpl, s.ssrfToken)
 	case ".txt":
 		response = fmt.Sprintf("token=%s", s.ssrfToken)
-
-	// TODO: dynamically generate these formats with the secret token rendered in the media
-	case ".gif":
-		response = readTemplateFile("gif.gif")
 	case ".png":
 		response = readTemplateFile("png.png")
 	case ".jpg", ".jpeg":
 		response = readTemplateFile("jpeg.jpg")
+	// TODO: dynamically generate these formats with the secret token rendered in the media
+	case ".gif":
+		response = readTemplateFile("gif.gif")
 	case ".mp3":
 		response = readTemplateFile("mp3.mp3")
 	case ".mp4":
