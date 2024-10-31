@@ -18,6 +18,6 @@ func opts() fx.Option {
 			handler.NewServerRouter,
 			handler.NewHTTPServer,
 		),
-		fx.Invoke(handler.StartServer),
+		fx.Invoke(handler.StartFilesGenerator, handler.StartServer),
 	)
 }
