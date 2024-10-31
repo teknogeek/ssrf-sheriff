@@ -1,0 +1,6 @@
+version: '3'
+services:
+  ssrf_sheriff:
+    build: .
+    ports:
+      - "8000:8000"
